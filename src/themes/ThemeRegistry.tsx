@@ -223,6 +223,15 @@ export const theme = createTheme({
         },
       },
     },
+    MuiChip: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            background: `${primary.main}`,
+          },
+        },
+      },
+    },
     MuiButton: {
       styleOverrides: {
         root: {

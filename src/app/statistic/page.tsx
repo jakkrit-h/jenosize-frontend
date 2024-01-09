@@ -74,6 +74,7 @@ export default function StatisticPage() {
               <Typography
                 fontWeight={'bold'}
                 color={(theme) => theme.palette.grey[600]}
+                variant="subtitle2"
               >
                 {selectedDate?.period === DATE_SLIDER_PERIOD.WEEK
                   ? `${dayjs(selectedDate?.date[0]).format('DD')} - ${dayjs(
@@ -89,7 +90,7 @@ export default function StatisticPage() {
           </Grid>
           <Grid item xs={6} textAlign={'right'}>
             <IconButton color="primary">
-              <FontAwesomeIcon icon={faArrowUpFromBracket} />
+              <FontAwesomeIcon icon={faArrowUpFromBracket} size="sm" />
             </IconButton>
           </Grid>
         </Grid>
