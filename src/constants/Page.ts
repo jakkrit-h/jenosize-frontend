@@ -4,5 +4,6 @@ export enum PAGES {
   REPORT_OKRS_PAGE = '/report/okrs',
   STATISTIC_PAGE = '/statistic',
   SETTING_PAGE = '/setting',
+  HOME_PAGE = '/',
   ALL = '/.*',
 }

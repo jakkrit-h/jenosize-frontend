@@ -9,6 +9,8 @@ import StatisticGraphView, {
   IGraphData,
 } from '@/components/statistic/GraphView';
 import StatisticListView from '@/components/statistic/ListView';
+import { store, useAppDispatch } from '@/store';
+import { random } from '@/store/slices/appSlice';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faComment,
@@ -40,6 +42,7 @@ interface ITopic {
   prefix: string;
 }
 export default function StatisticPage() {
+  const appDispatch = useAppDispatch();
   const topics: ITopic[] = [
     { title: 'Like', icon: faThumbsUp, prefix: 'People Likes' },
     { title: 'Comment', icon: faComment, prefix: 'Comments' },
@@ -110,7 +113,7 @@ export default function StatisticPage() {
               )}
             </Grid>
             <Grid item xs={6} textAlign={'right'}>
-              <IconButton color="primary">
+              <IconButton color="primary" onClick={() => appDispatch(random())}>
                 <FontAwesomeIcon icon={faArrowUpFromBracket} size="sm" />
               </IconButton>
             </Grid>
