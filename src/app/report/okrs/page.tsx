@@ -138,22 +138,13 @@ Ventus decipio tamen cognomen neque.`,
             </Grid>
             <Grid container item xs={12} spacing={1}>
               <Grid item>
-                <img
-                  src={'https://loremflickr.com/640/480?lock=5783137908948992'}
-                  width="100"
-                />
+                <img src={'https://picsum.photos/200'} width="100" />
               </Grid>
               <Grid item>
-                <img
-                  src={'https://loremflickr.com/640/480?lock=5783137908948992'}
-                  width="100"
-                />
+                <img src={'https://picsum.photos/300'} width="100" />
               </Grid>
               <Grid item>
-                <img
-                  src={'https://loremflickr.com/640/480?lock=5783137908948992'}
-                  width="100"
-                />
+                <img src={'https://picsum.photos/400'} width="100" />
               </Grid>
             </Grid>
           </Grid>
