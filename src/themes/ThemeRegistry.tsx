@@ -24,7 +24,7 @@ const grey = {
 const primary = {
   lighter: '#D0ECFE',
   light: '#73BAFB',
-  main: '#2962ff',
+  main: '#325eff',
   dark: '#0C44AE',
   darker: '#042174',
   contrastText: '#FFFFFF',

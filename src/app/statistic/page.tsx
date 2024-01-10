@@ -22,8 +22,11 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
+  Box,
+  Button,
   Chip,
   Container,
+  Divider,
   Grid,
   IconButton,
   Stack,
@@ -66,7 +69,18 @@ export default function StatisticPage() {
   }, [selectedDate]);
   return (
     <>
-      <Grid container justifyContent={'center'}>
+      <Grid container justifyContent={'center'} pb={3}>
+        <Grid item xs={12} md={8}>
+          <Box boxShadow={3} py={1}>
+            <Stack direction={'row'}>
+              <Button fullWidth color="inherit">
+                Submission
+              </Button>
+              <Divider orientation="vertical" variant="middle" flexItem />
+              <Button fullWidth>Engagement</Button>
+            </Stack>
+          </Box>
+        </Grid>
         <Grid item xs={12} md={8}>
           <DateSlider
             onChange={(result) => {
