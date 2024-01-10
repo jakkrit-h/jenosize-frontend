@@ -1,3 +1,4 @@
+'use client';
 import { Box, Stack, Typography } from '@mui/material';
 import { ReactNode } from 'react';
 import { theme } from '../../themes/ThemeRegistry';

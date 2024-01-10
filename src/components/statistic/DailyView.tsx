@@ -1,3 +1,4 @@
+'use client';
 import {
   faArrowUpFromBracket,
   faGift,
@@ -10,45 +11,71 @@ import {
   faGem,
   faThumbsUp,
 } from '@fortawesome/free-regular-svg-icons';
+import { useEffect, useState } from 'react';
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 
 const maxRandom = 1000;
+interface IData {
+  title: string;
+  subtitle: string;
+  icon: IconProp;
+  number: number;
+}
+const defaultData: IData[] = [
+  {
+    title: 'Like',
+    subtitle: 'Likes',
+    icon: faThumbsUp,
+    number: 0,
+  },
+  {
+    title: 'Comment',
+    subtitle: 'Comments',
+    icon: faComment,
+    number: 0,
+  },
+  {
+    title: 'Point',
+    subtitle: 'Points',
+    icon: faGift,
+    number: 0,
+  },
+  {
+    title: 'Diamond',
+    subtitle: 'Diamonds',
+    icon: faGem,
+    number: 0,
+  },
+];
 export default function StatisticDailyView() {
+  const [data, setData] = useState<IData[]>([]);
+
+  useEffect(() => {
+    setData(
+      defaultData.map((d) => {
+        d.number = Math.floor(Math.random() * maxRandom);
+        return d;
+      })
+    );
+  }, []);
   return (
     <>
-      <Grid container spacing={2}>
-        <Grid item xs={6} md={4} lg={3}>
-          <InfoBox
-            icon={faThumbsUp}
-            title={'Like'}
-            number={Math.floor(Math.random() * maxRandom)}
-            subTitle="Likes"
-          />
+      {data && (
+        <Grid container spacing={2}>
+          {data.map((d, i) => {
+            return (
+              <Grid item xs={6} md={4} lg={3} key={i}>
+                <InfoBox
+                  icon={d.icon}
+                  title={d.title}
+                  number={d.number}
+                  subTitle={d.subtitle}
+                />
+              </Grid>
+            );
+          })}
         </Grid>
-        <Grid item xs={6} md={4} lg={3}>
-          <InfoBox
-            icon={faComment}
-            title={'Comment'}
-            number={Math.floor(Math.random() * maxRandom)}
-            subTitle="Comments"
-          />
-        </Grid>
-        <Grid item xs={6} md={4} lg={3}>
-          <InfoBox
-            icon={faGift}
-            title={'Point'}
-            number={Math.floor(Math.random() * maxRandom)}
-            subTitle="Point"
-          />
-        </Grid>
-        <Grid item xs={6} md={4} lg={3}>
-          <InfoBox
-            icon={faGem}
-            title={'Diamond'}
-            number={Math.floor(Math.random() * maxRandom)}
-            subTitle="Diamond"
-          />
-        </Grid>
-      </Grid>
+      )}
     </>
   );
 }

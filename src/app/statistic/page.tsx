@@ -43,7 +43,11 @@ export default function StatisticPage() {
     { title: 'Point', icon: faGift, prefix: 'Points' },
     { title: 'Diamond', icon: faGem, prefix: 'Diamonds' },
   ];
-  const [selectedDate, setSelectedDate] = useState<IDateSliderResult>();
+  const [selectedDate, setSelectedDate] = useState<IDateSliderResult>({
+    date: [new Date()],
+    displayType: DATE_SLIDER_DISPLAY_TYPE.CHART,
+    period: DATE_SLIDER_PERIOD.DATE,
+  });
   const [selectedTopic, setSelectedTopic] = useState<ITopic>(topics[0]);
   const genData = useCallback(() => {
     const data: IGraphData = { xAxis: [], yAxis: [] };
@@ -62,88 +66,102 @@ export default function StatisticPage() {
   }, [selectedDate]);
   return (
     <>
-      <DateSlider
-        onChange={(result) => {
-          setSelectedDate(result);
-        }}
-      />
-      <Container>
-        <Grid container spacing={2} alignItems={'center'} my={2}>
-          <Grid item xs={6} alignSelf={'end'}>
-            {selectedDate && (
-              <Typography
-                fontWeight={'bold'}
-                color={(theme) => theme.palette.grey[600]}
-                variant="subtitle2"
-              >
-                {selectedDate?.period === DATE_SLIDER_PERIOD.WEEK
-                  ? `${dayjs(selectedDate?.date[0]).format('DD')} - ${dayjs(
-                      selectedDate?.date.slice(-1)[0]
-                    ).format('DD MMMM YYYY')}`
-                  : dayjs(selectedDate?.date[0]).format(
-                      selectedDate?.period === DATE_SLIDER_PERIOD.DATE
-                        ? 'DD MMMM YYYY'
-                        : 'MMMM YYYY'
-                    )}
-              </Typography>
-            )}
-          </Grid>
-          <Grid item xs={6} textAlign={'right'}>
-            <IconButton color="primary">
-              <FontAwesomeIcon icon={faArrowUpFromBracket} size="sm" />
-            </IconButton>
-          </Grid>
+      <Grid container justifyContent={'center'}>
+        <Grid item xs={12} md={8}>
+          <DateSlider
+            onChange={(result) => {
+              setSelectedDate(result);
+            }}
+          />
         </Grid>
-        {selectedDate?.period === DATE_SLIDER_PERIOD.DATE ? (
-          <StatisticDailyView />
-        ) : (
-          <>
-            <Stack direction={'row'} spacing={1}>
-              {topics.map((data, index) => {
-                return (
-                  <Chip
-                    key={index}
-                    size="small"
-                    label={
-                      <Typography
-                        color={
-                          selectedTopic.title === data.title
-                            ? 'white'
-                            : 'primary'
+        <Grid item xs={12} md={8} px={{ xs: 2, md: 0 }}>
+          <Grid container spacing={2} alignItems={'center'} my={2}>
+            <Grid item xs={6} alignSelf={'end'}>
+              {selectedDate && (
+                <Typography
+                  fontWeight={'bold'}
+                  color={(theme) => theme.palette.grey[600]}
+                  variant="subtitle2"
+                >
+                  {selectedDate?.period === DATE_SLIDER_PERIOD.WEEK
+                    ? `${dayjs(selectedDate?.date[0]).format('DD')} - ${dayjs(
+                        selectedDate?.date.slice(-1)[0]
+                      ).format('DD MMMM YYYY')}`
+                    : dayjs(selectedDate?.date[0]).format(
+                        selectedDate?.period === DATE_SLIDER_PERIOD.DATE
+                          ? 'DD MMMM YYYY'
+                          : 'MMMM YYYY'
+                      )}
+                </Typography>
+              )}
+            </Grid>
+            <Grid item xs={6} textAlign={'right'}>
+              <IconButton color="primary">
+                <FontAwesomeIcon icon={faArrowUpFromBracket} size="sm" />
+              </IconButton>
+            </Grid>
+          </Grid>
+          {selectedDate &&
+          selectedDate?.period === DATE_SLIDER_PERIOD.DATE &&
+          selectedDate.displayType === DATE_SLIDER_DISPLAY_TYPE.CHART ? (
+            <>
+              <StatisticDailyView />
+            </>
+          ) : (
+            selectedDate && (
+              <>
+                <Stack direction={'row'} spacing={1}>
+                  {topics.map((data, index) => {
+                    return (
+                      <Chip
+                        key={index}
+                        size="small"
+                        label={
+                          <Typography
+                            color={
+                              selectedTopic.title === data.title
+                                ? 'white'
+                                : 'primary'
+                            }
+                            variant="subtitle2"
+                          >
+                            <FontAwesomeIcon
+                              icon={data.icon}
+                              style={{ marginInline: 5 }}
+                            />
+                            {data.title}
+                          </Typography>
                         }
-                        variant="subtitle2"
-                      >
-                        <FontAwesomeIcon
-                          icon={data.icon}
-                          style={{ marginInline: 5 }}
-                        />
-                        {data.title}
-                      </Typography>
-                    }
-                    variant={
-                      selectedTopic.title === data.title ? 'filled' : 'outlined'
-                    }
-                    color="primary"
-                    onClick={() =>
-                      setSelectedTopic(
-                        topics.find((t) => t.title === data.title) ?? topics[0]
-                      )
-                    }
+                        variant={
+                          selectedTopic.title === data.title
+                            ? 'filled'
+                            : 'outlined'
+                        }
+                        color="primary"
+                        onClick={() =>
+                          setSelectedTopic(
+                            topics.find((t) => t.title === data.title) ??
+                              topics[0]
+                          )
+                        }
+                      />
+                    );
+                  })}
+                </Stack>
+                {selectedDate?.displayType ===
+                DATE_SLIDER_DISPLAY_TYPE.CHART ? (
+                  <StatisticGraphView data={genData()} />
+                ) : (
+                  <StatisticListView
+                    icon={selectedTopic.icon}
+                    prefix={selectedTopic.prefix}
                   />
-                );
-              })}
-            </Stack>
-            {selectedDate?.displayType === DATE_SLIDER_DISPLAY_TYPE.CHART ? (
-              <StatisticGraphView data={genData()} />
-            ) : (
-              <StatisticListView
-                icon={selectedTopic.icon}
-                prefix={selectedTopic.prefix}
-              />
-            )}
-          </>
-        )}
-      </Container>
+                )}
+              </>
+            )
+          )}
+        </Grid>
+      </Grid>
     </>
   );
 }

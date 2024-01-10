@@ -14,45 +14,30 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
+import MainNavBar from './MainNavbar';
+import { usePathname } from 'next/navigation';
+import { ReactNode } from 'react';
+import { INavBarMap } from '@/interfaces';
+import { PAGES } from '@/constants';
+import OkrNavBar from '../report/okrs/OkrNavBar';
 
 export default function TopBar() {
+  const pathname = usePathname();
+
+  const navList: INavBarMap[] = [
+    { pathname: PAGES.REPORT_OKRS_PAGE, nav: <OkrNavBar /> },
+    { pathname: PAGES.ALL, nav: <MainNavBar /> },
+  ];
   return (
     <>
-      <AppBar>
-        <Toolbar sx={{ mt: (theme) => (theme.breakpoints.down('md') ? 5 : 0) }}>
-          <Grid container direction={'row'} spacing={3} alignItems={'center'}>
-            <Grid item xs>
-              <IconButton size="small">
-                <FontAwesomeIcon
-                  icon={faHome}
-                  color={theme.palette.primary.contrastText}
-                />
-              </IconButton>
-            </Grid>
-            <Grid
-              container
-              item
-              xs={6}
-              justifyContent={'center'}
-              alignItems={'center'}
-            >
-              <Button color="primary" variant="contained" disableElevation>
-                <Typography fontWeight={'bold'} mr={5}>
-                  All Report
-                </Typography>
-                <FontAwesomeIcon icon={faAngleDown} />
-              </Button>
-            </Grid>
-
-            <Grid container item xs justifyContent={'flex-end'}>
-              <IconButton size="small">
-                <FontAwesomeIcon
-                  icon={faSliders}
-                  color={theme.palette.primary.contrastText}
-                />
-              </IconButton>
-            </Grid>
-          </Grid>
+      <AppBar position="relative">
+        <Toolbar
+          sx={{
+            [theme.breakpoints.down('md')]: { mt: 5, mb: 1 },
+            [theme.breakpoints.up('md')]: { mt: 0, mb: 1 },
+          }}
+        >
+          {navList.find((nav) => new RegExp(nav.pathname).test(pathname))?.nav}
         </Toolbar>
       </AppBar>
     </>

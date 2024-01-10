@@ -1,3 +1,4 @@
+'use client';
 import { theme } from '@/themes';
 import { LineChart } from '@mui/x-charts';
 export interface IGraphData {

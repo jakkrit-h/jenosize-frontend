@@ -1,3 +1,4 @@
+'use client';
 import {
   faAngleDown,
   faAngleLeft,
@@ -95,13 +96,14 @@ export default function DateSlider({ onChange }: IProps) {
                 borderBottom: (theme) => `1px solid ${theme.palette.grey[300]}`,
                 padding: 0,
                 minHeight: '20px',
+                flex: 1,
               }}
               value={period}
               onChange={(event, value) => setPeriod(value)}
             >
-              <Tab label="Daily" />
-              <Tab label="Weekly" />
-              <Tab label="Monthly" />
+              <Tab label="Daily" sx={{ flex: 1 }} />
+              <Tab label="Weekly" sx={{ flex: 1 }} />
+              <Tab label="Monthly" sx={{ flex: 1 }} />
             </Tabs>
 
             <IconButton

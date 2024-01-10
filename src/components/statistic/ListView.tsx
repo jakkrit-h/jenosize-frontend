@@ -1,3 +1,4 @@
+'use client';
 import { theme } from '@/themes';
 import { faker } from '@faker-js/faker';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
@@ -20,7 +21,7 @@ interface IProps {
 export default function StatisticListView({ icon, prefix }: IProps) {
   const data: IData[] = useMemo(() => {
     const result: IData[] = [];
-    for (let i = 0; i < 7; i++) {
+    for (let i = 0; i < 14; i++) {
       result.push({
         name: `${faker.person.firstName()} ${faker.person.lastName()}`,
         job: faker.person.jobType(),
@@ -49,7 +50,7 @@ export default function StatisticListView({ icon, prefix }: IProps) {
                     <Grid
                       container
                       item
-                      xs={9}
+                      xs={8}
                       spacing={1}
                       alignItems={'center'}
                     >
@@ -90,27 +91,26 @@ export default function StatisticListView({ icon, prefix }: IProps) {
                     <Grid
                       container
                       item
-                      xs={3}
+                      xs={4}
                       alignItems={'center'}
                       borderLeft={(theme) =>
                         `2px solid ${theme.palette.grey[300]}`
                       }
+                      px={1}
                     >
-                      <Box>
-                        <Stack direction={'row'} alignItems={'center'} px={2}>
-                          <Typography
-                            variant="caption"
-                            fontWeight={'bold'}
-                            color={(theme) => theme.palette.grey[500]}
-                          >
-                            <FontAwesomeIcon
-                              icon={icon}
-                              color={theme.palette.primary.main}
-                            />{' '}
-                            {d.counter} {prefix}
-                          </Typography>
-                        </Stack>
-                      </Box>
+                      <Stack direction={'row'} alignItems={'center'}>
+                        <Typography
+                          variant="caption"
+                          fontWeight={'bold'}
+                          color={(theme) => theme.palette.grey[500]}
+                        >
+                          <FontAwesomeIcon
+                            icon={icon}
+                            color={theme.palette.primary.main}
+                          />{' '}
+                          {d.counter} {prefix}
+                        </Typography>
+                      </Stack>
                     </Grid>
                   </Grid>
                 </Card>
