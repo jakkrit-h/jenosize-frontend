@@ -31,11 +31,7 @@ export default function FooterBottomNavigation() {
   }, [pathname]);
   return (
     <>
-      <BottomNavigation
-        showLabels
-        value={activeMenu}
-        sx={{ borderTop: (theme) => `1.5px solid ${theme.palette.grey[300]}` }}
-      >
+      <BottomNavigation showLabels value={activeMenu}>
         {navList.map((nav, index) => {
           return (
             <BottomNavigationAction

@@ -6,11 +6,9 @@ import ThemeRegistry from '@/themes/ThemeRegistry';
 import { Grid } from '@mui/material';
 import TopBar from '@/components/shared/TopBar';
 import Footer from '@/components/shared/Footer';
-import FooterBottomNavigation from '@/components/shared/FooterBottomNavigation';
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-import { Provider } from 'react-redux';
-import { store } from '@/store';
+
 import StoreProvider from './StoreProvider';
 config.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] });
@@ -38,11 +36,15 @@ export default function RootLayout({
               <Grid item xs="auto">
                 <TopBar />
               </Grid>
-              <Grid item xs sx={{ overflowY: 'auto', overflowX: 'hidden' }}>
+              <Grid
+                item
+                xs
+                sx={{ overflowY: 'auto', overflowX: 'hidden', py: 3 }}
+              >
                 {children}
               </Grid>
               <Grid item xs="auto">
-                <FooterBottomNavigation />
+                <Footer />
               </Grid>
             </Grid>
           </ThemeRegistry>

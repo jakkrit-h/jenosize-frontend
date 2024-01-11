@@ -32,13 +32,25 @@ export default function TopBar() {
   ];
   return (
     <>
-      <AppBar position="relative">
-        <Toolbar
-          sx={{
-            [theme.breakpoints.down('md')]: { mt: 5, mb: 1 },
-            [theme.breakpoints.up('md')]: { mt: 0, mb: 1 },
-          }}
-        >
+      <AppBar
+        position="relative"
+        sx={{
+          height: '100%',
+          [theme.breakpoints.down('md')]: {
+            pt: 0,
+            mb: 0,
+            display: 'flex',
+            justifyContent: 'flex-end',
+          },
+          [theme.breakpoints.up('md')]: {
+            pt: 0,
+            mb: 0,
+            display: 'flex',
+            justifyContent: 'center',
+          },
+        }}
+      >
+        <Toolbar sx={{ pb: 0 }}>
           {navList.find((nav) => new RegExp(nav.pathname).test(pathname))?.nav}
         </Toolbar>
       </AppBar>
