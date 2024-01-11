@@ -107,6 +107,11 @@ export default function LoginForm() {
               Login
             </Typography>
           </Grid>
+          {errorMessage && (
+            <Grid item xs={12}>
+              <Alert severity="error">{errorMessage}</Alert>
+            </Grid>
+          )}
           <Grid item xs={12}>
             <TextField
               fullWidth
@@ -125,6 +130,7 @@ export default function LoginForm() {
               error={!!errors.password}
             />
           </Grid>
+
           <Grid container item xs={12} spacing={1} justifyContent={'center'}>
             <Grid item xs>
               <Button
@@ -177,7 +183,6 @@ export default function LoginForm() {
           </Grid>
         </Grid>
       </form>
-      {errorMessage && <Alert severity="error">{errorMessage}</Alert>}
     </>
   );
 }
