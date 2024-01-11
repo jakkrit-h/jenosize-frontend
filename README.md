@@ -38,9 +38,13 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## URL EXAMPLE
 
 / - Example Search Places API
+
 /report/okrs - Example OKR Report  
+
 /statistic - Example Statistic Page
+
 /login - Example Login
+
 /gamexo - Example GameXO
 
 ## ENV
