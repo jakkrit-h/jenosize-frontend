@@ -2,7 +2,7 @@
 
 1. create .env file
 
-2. npm install - node version >=20
+2. npm install - node version 20+
 
 3. npm run dev
 
@@ -14,9 +14,9 @@
 
 /statistic - Example Statistic Page
 
-/login - Example Login
+/login - Example Login (Setting Menu -> Button Login Page)
 
-/gamexo - Example GameXO
+/gamexo - Example GameXO (Setting Menu -> Button Game XO Page)
 
 ## ENV
 

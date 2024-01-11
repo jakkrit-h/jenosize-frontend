@@ -45,7 +45,11 @@ export default function Home() {
               >
                 <Grid item xs={12} md={'auto'}>
                   <img
-                    src={`https://maps.googleapis.com/maps/api/place/photo?photoreference=${candi.photos[0].photo_reference}&sensor=false&maxheight=1080&maxwidth=1080&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`}
+                    src={`${
+                      candi.photos
+                        ? `https://maps.googleapis.com/maps/api/place/photo?photoreference=${candi.photos[0].photo_reference}&sensor=false&maxheight=1080&maxwidth=1080&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`
+                        : ''
+                    }`}
                     width="100%"
                   />
                 </Grid>

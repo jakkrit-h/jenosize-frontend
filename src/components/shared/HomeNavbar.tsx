@@ -1,9 +1,11 @@
+import { PAGES } from '@/constants';
 import { useAppDispatch } from '@/store';
 import { setSearch } from '@/store/slices/searchSlice';
 import { theme } from '@/themes';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
+  Button,
   Grid,
   IconButton,
   TextField,
@@ -19,24 +21,37 @@ export default function HomeNavbar() {
 
   return (
     <Grid container direction={'row'} spacing={3} alignItems={'center'} py={1}>
-      <Grid
-        container
-        item
-        xs="auto"
-        md
-        alignItems={'center'}
-        spacing={3}
-        justifyContent={'center'}
-      >
-        <Grid item xs="auto">
-          <Image src="/favicon.ico" width={50} height={50} priority alt="" />
-        </Grid>
+      <Grid item xs>
+        <Button href={PAGES.HOME_PAGE}>
+          <Grid
+            container
+            spacing={3}
+            alignItems={'center'}
+            justifyContent={'center'}
+          >
+            <Grid item xs="auto" display={'flex'} alignItems={'center'}>
+              <Image
+                src="/favicon.ico"
+                width={35}
+                height={35}
+                priority
+                alt=""
+              />
+            </Grid>
 
-        {useMediaQuery(theme.breakpoints.up('md')) && (
-          <Grid item xs>
-            <Typography variant="h5">Jenosize test</Typography>
+            {useMediaQuery(theme.breakpoints.up('md')) && (
+              <Grid item xs>
+                <Typography
+                  fontWeight={'bold'}
+                  variant="h6"
+                  color={(theme) => theme.palette.primary.contrastText}
+                >
+                  Jenosize test
+                </Typography>
+              </Grid>
+            )}
           </Grid>
-        )}
+        </Button>
       </Grid>
 
       <Grid container item xs justifyContent={'flex-end'}>
