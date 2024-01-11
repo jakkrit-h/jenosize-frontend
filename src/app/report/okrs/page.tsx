@@ -29,12 +29,6 @@ interface IData {
   content: string;
 }
 
-// const images: string[] = [
-//   faker.image.url(),
-//   faker.image.url(),
-//   faker.image.url(),
-// ];
-
 export default function OkrsReportPage() {
   const comments: IOkrsReportCommentCardProps[] = useMemo(
     () => [

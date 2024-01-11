@@ -1,22 +1,10 @@
 'use client';
 import { theme } from '@/themes';
-import {
-  faAngleDown,
-  faHome,
-  faSliders,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  AppBar,
-  Button,
-  Grid,
-  IconButton,
-  Toolbar,
-  Typography,
-} from '@mui/material';
+
+import { AppBar, Toolbar } from '@mui/material';
 import MainNavBar from './MainNavbar';
 import { usePathname } from 'next/navigation';
-import { ReactNode } from 'react';
+
 import { INavBarMap } from '@/interfaces';
 import { PAGES } from '@/constants';
 import OkrNavBar from '../report/okrs/OkrNavBar';

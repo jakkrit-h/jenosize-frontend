@@ -1,11 +1,5 @@
 import { theme } from '@/themes';
-import {
-  faAngleDown,
-  faAngleLeft,
-  faEllipsis,
-  faHome,
-  faSliders,
-} from '@fortawesome/free-solid-svg-icons';
+import { faAngleLeft, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, Grid, IconButton, Typography } from '@mui/material';
 

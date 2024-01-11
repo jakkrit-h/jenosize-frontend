@@ -1,7 +1,6 @@
 'use client';
 import { PAGES } from '@/constants';
-import { INavBar, INavBarMap } from '@/interfaces';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { INavBar } from '@/interfaces';
 import {
   faChartPie,
   faCheckCircle,
