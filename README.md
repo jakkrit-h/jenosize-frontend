@@ -35,6 +35,14 @@ The easiest way to deploy your Next.js app is to use the [Vercel Platform](https
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
 
+## URL EXAMPLE
+
+/ - Example Search Places API
+/report/okrs - Example OKR Report  
+/statistic - Example Statistic Page
+/login - Example Login
+/gamexo - Example GameXO
+
 ## ENV
 
 NEXT_PUBLIC_APP_API_KEY="VvCrrP2WRBvEp9jkMf76vJWUpGFEX6fh" - Fake App apikey
