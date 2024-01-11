@@ -20,12 +20,14 @@ import { ReactNode } from 'react';
 import { INavBarMap } from '@/interfaces';
 import { PAGES } from '@/constants';
 import OkrNavBar from '../report/okrs/OkrNavBar';
+import HomeNavbar from './HomeNavbar';
 
 export default function TopBar() {
   const pathname = usePathname();
 
   const navList: INavBarMap[] = [
     { pathname: PAGES.REPORT_OKRS_PAGE, nav: <OkrNavBar /> },
+    { pathname: PAGES.HOME_PAGE, nav: <HomeNavbar /> },
     { pathname: PAGES.ALL, nav: <MainNavBar /> },
   ];
   return (
