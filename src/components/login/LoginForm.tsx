@@ -1,4 +1,5 @@
 import {
+  FacebookAuthProvider,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -71,6 +72,16 @@ export default function LoginForm() {
   };
   const loginWithGoogle = () => {
     const googleProvider = new GoogleAuthProvider();
+    signInWithPopup(firebaseAuth, googleProvider)
+      .then((credential) => {
+        appDispatch(setCredential({ credential: credential }));
+      })
+      .catch((error: AxiosError) => {
+        setErrorMessage(JSON.stringify(error.message));
+      });
+  };
+  const loginWithFacebook = () => {
+    const googleProvider = new FacebookAuthProvider();
     signInWithPopup(firebaseAuth, googleProvider)
       .then((credential) => {
         appDispatch(setCredential({ credential: credential }));
@@ -159,7 +170,7 @@ export default function LoginForm() {
               fullWidth
               variant="contained"
               disableElevation
-              // onClick={() => login()}
+              onClick={() => loginWithFacebook()}
             >
               Login with Facebook
             </Button>

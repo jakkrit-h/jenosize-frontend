@@ -33,7 +33,7 @@ export default function ProfileCard() {
             sx={{ width: 56, height: 56 }}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={12} textAlign={'center'}>
           <Typography variant="h6" fontWeight={'bold'}>
             {userReducer.credential?.user.displayName ??
               userReducer.credential?.user.email}
