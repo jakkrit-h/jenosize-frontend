@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react';
 
 export default function FooterBottomNavigation() {
   const pathname = usePathname();
-  const [activeMenu, setActiveMenu] = useState<number>();
+  const [activeMenu, setActiveMenu] = useState<number|null>(null);
   const navList: INavBar[] = [
     { pathname: PAGES.WRITE_PAGE, icon: faEdit, label: 'Write' },
     { pathname: PAGES.APPROVAL_PAGE, icon: faCheckCircle, label: 'Approval' },
@@ -24,13 +24,16 @@ export default function FooterBottomNavigation() {
     { pathname: PAGES.SETTING_PAGE, icon: faCog, label: 'Setting' },
   ];
   useEffect(() => {
+    const a=navList.findIndex((nav) => new RegExp(`${nav.pathname}$`).test(pathname))
+    console.log(a)
     setActiveMenu(
-      navList.findIndex((nav) => new RegExp(pathname).test(nav.pathname))
+      a
     );
   }, [pathname]);
   return (
     <>
       <BottomNavigation showLabels value={activeMenu}>
+
         {navList.map((nav, index) => {
           return (
             <BottomNavigationAction

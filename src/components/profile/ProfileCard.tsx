@@ -1,3 +1,4 @@
+'use client';
 import { firebaseAuth } from '@/authentications/firebase';
 import { useAppDispatch } from '@/store';
 import { setCredential, userSelector } from '@/store/slices/userSlice';

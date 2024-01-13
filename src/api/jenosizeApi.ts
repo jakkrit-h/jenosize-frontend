@@ -51,6 +51,5 @@ export function searchPlaces(
 export function getXoBotTurn(
   slots: (number | null)[]
 ): Promise<AxiosResponse<number>> {
-  console.log(slots)
   return getApiInstance().get('/jenosize/gamexo', { params: { slots } });
 }

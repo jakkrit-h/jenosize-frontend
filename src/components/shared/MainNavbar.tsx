@@ -1,3 +1,5 @@
+'use client';
+import { PAGES } from '@/constants';
 import { theme } from '@/themes';
 import {
   faAngleDown,
@@ -10,9 +12,9 @@ import { Button, Grid, IconButton, Toolbar, Typography } from '@mui/material';
 export default function MainNavBar() {
   return (
     <>
-      <Grid container direction={'row'} spacing={3} alignItems={'center'}>
+      <Grid container direction={'row'} spacing={3} alignItems={'center'} sx={{  [theme.breakpoints.down('sm')]:{mt:1.5}, [theme.breakpoints.up('md')]:{mt:0}}}>
         <Grid item xs>
-          <IconButton size="small">
+          <IconButton size="small" href={PAGES.HOME_PAGE}>
             <FontAwesomeIcon
               icon={faHome}
               color={theme.palette.primary.contrastText}

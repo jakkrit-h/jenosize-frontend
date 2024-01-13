@@ -39,7 +39,7 @@ export default function TopBar() {
         }}
       >
         <Toolbar sx={{ pb: 0 }}>
-          {navList.find((nav) => new RegExp(nav.pathname).test(pathname))?.nav}
+          {navList.find((nav) => new RegExp(`${nav.pathname}$`).test(pathname))?.nav}
         </Toolbar>
       </AppBar>
     </>

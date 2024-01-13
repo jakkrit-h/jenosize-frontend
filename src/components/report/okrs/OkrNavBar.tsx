@@ -1,3 +1,5 @@
+'use client';
+import { PAGES } from '@/constants';
 import { theme } from '@/themes';
 import { faAngleLeft, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -7,7 +9,7 @@ export default function OkrNavBar() {
   return (
     <Grid container direction={'row'} spacing={3} alignItems={'center'}>
       <Grid item xs>
-        <Button color="primary" variant="contained" disableElevation>
+        <Button color="primary" variant="contained" disableElevation href={PAGES.HOME_PAGE}>
           <FontAwesomeIcon icon={faAngleLeft} style={{ marginInline: 5 }} />{' '}
           Back
         </Button>

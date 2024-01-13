@@ -1,3 +1,4 @@
+'use client';
 import { faImage } from '@fortawesome/free-regular-svg-icons';
 import { faAt, faPaperclip } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

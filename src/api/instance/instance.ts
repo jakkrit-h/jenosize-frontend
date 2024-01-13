@@ -1,7 +1,6 @@
 import axios, { AxiosInstance, CreateAxiosDefaults } from 'axios';
 let instance: AxiosInstance;
 export function getApiInstance(config?: CreateAxiosDefaults) {
-  console.log(process.env.NEXT_PUBLIC_APP_API_KEY);
   if (!instance) createApiInstance();
   return instance;
 }

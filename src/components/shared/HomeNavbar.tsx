@@ -1,3 +1,4 @@
+'use client';
 import { PAGES } from '@/constants';
 import { useAppDispatch } from '@/store';
 import { setSearch } from '@/store/slices/searchSlice';

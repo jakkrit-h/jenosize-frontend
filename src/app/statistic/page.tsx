@@ -35,7 +35,7 @@ import {
   Typography,
 } from '@mui/material';
 import dayjs from 'dayjs';
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 interface ITopic {
   title: string;
   icon: IconProp;
@@ -70,6 +70,9 @@ export default function StatisticPage() {
     }
     return data;
   }, [selectedDate]);
+  useEffect(()=>{
+    appDispatch(random())
+  },[])
   return (
     <>
       <Grid container justifyContent={'center'} pb={3}>
