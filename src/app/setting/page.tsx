@@ -7,7 +7,7 @@ export default function SettingPage() {
   return (
     <>
       <Container maxWidth={'sm'}>
-        <Stack spacing={3} textAlign={'center'}>
+        <Stack spacing={3} textAlign={'center'} py={3}>
           <Typography variant="h3" fontWeight={'bold'}>
             SETTING PAGE
           </Typography>

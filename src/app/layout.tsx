@@ -39,7 +39,7 @@ export default function RootLayout({
               <Grid
                 item
                 xs
-                sx={{ overflowY: 'auto', overflowX: 'hidden', py: 3 }}
+                sx={{ overflowY: 'auto', overflowX: 'hidden',  }}
               >
                 {children}
               </Grid>

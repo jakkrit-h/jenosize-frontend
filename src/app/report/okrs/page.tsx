@@ -77,8 +77,8 @@ Ventus decipio tamen cognomen neque.`,
   );
   return (
     <>
-      <Container maxWidth="md">
-        <Grid container>
+      <Container maxWidth="md" >
+        <Grid container pt={3}>
           {/* CONTENT */}
           <Grid container item px={3} gap={3}>
             <Grid container item xs={12} gap={1}>
