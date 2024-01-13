@@ -25,7 +25,6 @@ export default function FooterBottomNavigation() {
   ];
   useEffect(() => {
     const a=navList.findIndex((nav) => new RegExp(`${nav.pathname}$`).test(pathname))
-    console.log(a)
     setActiveMenu(
       a
     );

@@ -23,7 +23,7 @@ import { alpha } from '@mui/material/styles';
 import OkrsReportCommentCard, {
   IOkrsReportCommentCardProps,
 } from '@/components/report/okrs/CommentCard';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 interface IData {
   title: string;
   content: string;
@@ -75,6 +75,7 @@ Ventus decipio tamen cognomen neque.`,
     ],
     []
   );
+  const [date, setDate] = useState<Date>(dayjs().toDate())
   return (
     <>
       <Container maxWidth="md" >
@@ -105,7 +106,7 @@ Ventus decipio tamen cognomen neque.`,
                       color={(theme) => theme.palette.grey[500]}
                     >
                       <FontAwesomeIcon icon={faCalendar} />{' '}
-                      {dayjs().format('DD/MM/YYYY')}
+                      {dayjs(date).format('DD/MM/YYYY')}
                     </Typography>
                   </Grid>
                   <Grid item xs={12}>
@@ -114,7 +115,7 @@ Ventus decipio tamen cognomen neque.`,
                       color={(theme) => theme.palette.grey[500]}
                     >
                       <FontAwesomeIcon icon={faClock} />{' '}
-                      {dayjs().format('HH:MM')}
+                      {dayjs(date).format('HH:MM')}
                     </Typography>
                   </Grid>
                 </Grid>
