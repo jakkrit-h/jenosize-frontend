@@ -10,11 +10,17 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 
 import StoreProvider from './StoreProvider';
+import dayjs from 'dayjs';
+import utc from 'dayjs/plugin/utc';
+import timezone from 'dayjs/plugin/timezone'
 config.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] });
 export const metadata: Metadata = {
   title: 'Jenosize Exam',
 };
+dayjs.extend(utc)
+dayjs.extend(timezone)
+dayjs.tz.setDefault("'Asia/Bangkok'")
 
 export default function RootLayout({
   children,

@@ -50,7 +50,7 @@ export default function StatisticPage() {
     { title: 'Diamond', icon: faGem, prefix: 'Diamonds' },
   ];
   const [selectedDate, setSelectedDate] = useState<IDateSliderResult>({
-    date: [new Date()],
+    date: [dayjs().toDate()],
     displayType: DATE_SLIDER_DISPLAY_TYPE.CHART,
     period: DATE_SLIDER_PERIOD.DATE,
   });

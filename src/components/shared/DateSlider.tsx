@@ -53,7 +53,7 @@ export default function DateSlider({ onChange }: IProps) {
   const [displayType, setDisplayType] = useState<DATE_SLIDER_DISPLAY_TYPE>(
     DATE_SLIDER_DISPLAY_TYPE.CHART
   );
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date());
+  const [selectedDate, setSelectedDate] = useState<Date>(dayjs().toDate());
   const genDaysOfWeek = () => {
     const startDate = dayjs(selectedDate)
       .locale('custom', localeCustom)
@@ -143,8 +143,8 @@ export default function DateSlider({ onChange }: IProps) {
           {daysOfWeek.map((d, index) => {
             const date = dayjs(d);
             const isSameSelectedDate = date.isSame(selectedDate, 'date');
-            const isCurrentDate = date.isSame(new Date(), 'date');
-            const isFuture = date.isAfter(new Date(), 'date');
+            const isCurrentDate = date.isSame(dayjs(), 'date');
+            const isFuture = date.isAfter(dayjs(), 'date');
             return (
               <Grid
                 container
@@ -209,7 +209,7 @@ export default function DateSlider({ onChange }: IProps) {
           <Grid item xs="auto" alignSelf={'flex-end'}>
             <Button
               onClick={() => {
-                setSelectedDate(new Date());
+                setSelectedDate(dayjs().toDate());
                 setWeek(isCurrentWeek);
               }}
             >
