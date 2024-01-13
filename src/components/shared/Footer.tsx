@@ -13,7 +13,6 @@ export default function Footer() {
 
     { pathname: PAGES.ALL, nav: <FooterBottomNavigation /> },
   ];
-  console.log(pathname);
   return (
     <Box
       sx={{
