@@ -73,6 +73,7 @@ export default function HomeNavbar() {
             endAdornment: (
               <IconButton
                 onClick={() => {
+  
                   appDispatch(setSearch(inputRef.current?.value));
                   if (inputRef.current) {
                     inputRef.current.value = '';

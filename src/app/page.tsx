@@ -2,40 +2,58 @@
 
 import { IPlaceResult, searchPlaces } from '@/api';
 import styles from './page.module.css';
-import { Button, Container, Grid, Typography } from '@mui/material';
-import { store } from '@/store';
+import { Alert, Button, Container, Grid, Typography } from '@mui/material';
+import { store, useAppDispatch } from '@/store';
 import { useSelector } from 'react-redux';
-import { searchSelector } from '@/store/slices/searchSlice';
+import { searchSelector, setSearch } from '@/store/slices/searchSlice';
 import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { AxiosError } from 'axios';
+import LoadingDialog from '@/components/shared/LoadingDialog';
 
 export default function Home() {
   const selector = useSelector(searchSelector);
   const [data, setData] = useState<IPlaceResult>();
-  const [error, setError] = useState<boolean>();
+  const [loading,setLoading] =useState<boolean>(false);
+  const [error, setError] = useState<string>();
+  const appDispatch = useAppDispatch();
+
   useEffect(() => {
-    onSearch();
+    if(selector.length>0){
+
+      onSearch();
+
+
+    }
   }, [selector]);
   function onSearch() {
-    setError(false);
+    setLoading(true);
+    setError(undefined);
     searchPlaces(selector)
       .then((response) => {
         setData(response.data);
       })
-      .catch((err) => {
-        setError(true);
+      .catch((err:AxiosError) => {
+        setError(JSON.stringify(err.message));
+      }).finally(()=>{
+        setLoading(false);
+        appDispatch(setSearch(''));
       });
   }
   return (
     <>
       <Container>
+       
         <Grid container my={5} rowGap={3}>
+        {error?<Grid item xs={12}><Alert severity='error'>{error}</Alert></Grid>:<>
           {data?.candidates.map((candi, index) => {
             return (
               <Grid
+              key={index}
                 item
                 xs={12}
+         
                 container
                 columnGap={3}
                 p={3}
@@ -43,14 +61,14 @@ export default function Home() {
                 boxShadow={2}
                 border={(theme) => `1px solid ${theme.palette.grey[300]}`}
               >
-                <Grid item xs={12} md={'auto'}>
+                <Grid item xs={12} md={3}>
                   <img
                     src={`${
                       candi.photos
                         ? `https://maps.googleapis.com/maps/api/place/photo?photoreference=${candi.photos[0].photo_reference}&sensor=false&maxheight=1080&maxwidth=1080&key=${process.env.NEXT_PUBLIC_GOOGLE_API_KEY}`
                         : ''
                     }`}
-                    width="100%"
+                    style={{maxWidth:'100%'}}
                   />
                 </Grid>
                 <Grid item container xs spacing={0}>
@@ -79,9 +97,10 @@ export default function Home() {
                 </Grid>
               </Grid>
             );
-          })}
+          })}</>}
         </Grid>
       </Container>
+      <LoadingDialog open={loading}/>
     </>
   );
 }

@@ -1,5 +1,6 @@
 'use client';
 import { getXoBotTurn } from '@/api';
+import LoadingDialog from '@/components/shared/LoadingDialog';
 import { faCircle } from '@fortawesome/free-regular-svg-icons';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -72,7 +73,6 @@ export default function GameXoPage() {
     setLoading(true);
     getXoBotTurn(slot)
       .then((response) => {
-        console.log(response);
         onSet(response.data);
       })
       .catch((err: AxiosError) => {
@@ -205,17 +205,7 @@ export default function GameXoPage() {
           )}
         </Typography>
       </Dialog>
-      <Dialog open={loading} maxWidth="md" fullWidth>
-        <Typography
-          variant="h3"
-          mx={5}
-          my={15}
-          textAlign={'center'}
-          fontWeight={'bold'}
-        >
-          Loading ....
-        </Typography>
-      </Dialog>
+      <LoadingDialog open={loading} />
     </>
   );
 }
